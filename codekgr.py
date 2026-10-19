@@ -9,7 +9,6 @@ import networkx as nx
 import numpy as np
 import pandas as pd
 
-# 1. Cấu hình thực nghiệm trên princeton-nlp/SWE-bench_Lite cho Gemma 4
 CFG = dict(
     seed=42,
     dataset="princeton-nlp/SWE-bench_Lite",
@@ -28,7 +27,6 @@ CFG = dict(
     model_name="gemma-4-codekgr",
 )
 
-# 2. Cơ sở mã giả lập và kiểm thử đơn vị theo phong cách SWE-Bench
 MOCK_CODEBASE = """
 class DataPipeline:
     def __init__(self, raw_records):
@@ -62,7 +60,6 @@ def test_pipeline_heterogeneous_input():
     assert result == 61.0, f"Expected 61.0, but got {result}"
 """
 
-# 3. Bộ cắt lát đồ thị cây cú pháp trừu tượng (AST Dependency Pruner)
 class DependencyPruner(ast.NodeVisitor):
     def __init__(self, target_func_name):
         self.target = target_func_name
