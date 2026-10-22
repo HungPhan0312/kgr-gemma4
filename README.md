@@ -9,7 +9,7 @@ Kho lưu trữ chính thức cho bài báo nghiên cứu và quy trình thực n
 
 ---
 
-## 1. Tổng quan & động lực nghiên cứu
+## 1. Tổng quan và động lực nghiên cứu
 
 Các công cụ lập trình và hệ thống kỹ thuật phần mềm tiên tiến nhất hiện nay dựa trên các mô hình API khổng lồ chạy trên cơ sở hạ tầng đám mây thương mại kết nối internet, khiến kỹ thuật phần mềm cao cấp nằm ngoài tầm với của nhiều nhà phát triển muốn hoạt động ngoại tuyến trên phần cứng thông thường[cite: 1, 2]. Dù các mô hình cục bộ nhỏ đã có những tiến bộ nhanh chóng, chúng vẫn gặp khó khăn lớn với kỹ thuật phần mềm phức tạp nhiều lượt xử lý, hiện tượng cạn kiệt bộ nhớ RAM, bão hòa bộ nhớ đệm chú ý KV-cache bậc hai và sự đánh đổi giữa việc định vị đúng vùng mã nguồn nhưng tạo bản vá lỗi bị sai trên các cơ sở mã lớn[cite: 2, 10, 12].
 
@@ -17,7 +17,7 @@ Dự án **'kgr-gemma4'** giải quyết các thách thức trên thông qua vi�
 1. **Xây dựng đồ thị kho lưu trữ ('ast' -> 'networkx'):** Phân tích cú pháp các kho mã nguồn Python thành các nút 'File', 'Class', 'Function', 'Test' được kết nối bởi các cạnh 'DEFINES', 'CALLS', 'IMPORTS', 'INHERITS' và 'TESTED_BY'[cite: 12, 16].
 2. **Cắt lát cây cú pháp trừu tượng tất định ('DependencyPruner'):** Loại bỏ các nhánh thực thi không liên quan thông qua lớp 'ast.NodeVisitor' ('visit_FunctionDef', 'call_graph', 'func_nodes') trước khi tổng hợp ngữ cảnh[cite: 11, 16].
 3. **Truy xuất lai ghép đa kênh:** Kết hợp kênh từ vựng 'BM25', các ký hiệu 'AST', véc-tơ dày đặc từ 'embeddinggemma-2' và điều hướng lân cận trên đồ thị trong ngân sách ngữ cảnh chặt chẽ ('top_k=10' hàm hiển thị cho mô hình, 'context_char_budget=24000' ký tự tương đương khoảng '6k' token ngữ cảnh)[cite: 10, 12, 16].
-4. **Suy luận nhiều lượt & kiểm chứng Lặp:** Thực thi chu trình có cấu trúc gồm lập chiến lược ('Strategist') -> điều hướng đồ thị ('Graph Navigation') -> phản biện tái lập kế hoạch ('Critic' với 'critic_rounds=2') -> sinh bản vá ('Patch Generation') -> bộ kiểm chứng đồ thị sửa đổi bản vá ('Graph Verifier' với 'verifier_rounds=2')[cite: 12, 16].
+4. **Suy luận nhiều lượt và kiểm chứng Lặp:** Thực thi chu trình có cấu trúc gồm lập chiến lược ('Strategist') -> điều hướng đồ thị ('Graph Navigation') -> phản biện tái lập kế hoạch ('Critic' với 'critic_rounds=2') -> sinh bản vá ('Patch Generation') -> bộ kiểm chứng đồ thị sửa đổi bản vá ('Graph Verifier' với 'verifier_rounds=2')[cite: 12, 16].
 
 ---
 
@@ -37,9 +37,9 @@ Dự án **'kgr-gemma4'** giải quyết các thách thức trên thông qua vi�
            │
            ▼
     [3. Tác nhân SWE Gemma 4 cục bộ (google/gemma-4-E4B-it)]
-      ├── Lập chiến lược & điều hướng đồ thị (Strategist & Graph Navigation)
+      ├── Lập chiến lược và điều hướng đồ thị (Strategist and Graph Navigation)
       ├── Phản biện tái lập kế hoạch (Critic Re-planning, critic_rounds=2)
-      └── Kiểm chứng đồ thị & sửa bản vá (Graph Verifier, verifier_rounds=2, temperature=0.0)
+      └── Kiểm chứng đồ thị và sửa bản vá (Graph Verifier, verifier_rounds=2, temperature=0.0)
            │
            ▼
     [4. Đánh giá & xuất kết quả (Evaluation & Export)]
@@ -61,7 +61,7 @@ Khung đánh giá thực nghiệm trong tệp 'codekgr.py' tiến hành đo lư�
 
 ---
 
-## 4. Cấu trúc kho lưu trữ & hướng dẫn sử dụng
+## 4. Cấu trúc kho lưu trữ và hướng dẫn sử dụng
 
 * **'codekgr.py':** Tệp mã nguồn chính bằng ngôn ngữ 'Python' chứa thiết lập cấu hình 'CFG' ('seed=42', 'n_issues=40', 'time_budget_hours=9.5', 'max_new_tokens=1024', 'temperature=0.0'), cơ sở mã giả lập 'MOCK_CODEBASE' kèm kiểm thử 'UNIT_TEST_CODE', lớp cắt lát 'DependencyPruner', bộ dựng đồ thị 'networkx', khung đánh giá 'A1'–'A7' (tính toán 'Recall@k', 'MRR', 'groundedness', phân loại lỗi Loại I/II/III, 'bootstrap CIs', chỉ số đại diện định vị đúng 'location-correct proxy') và bộ xuất tệp 'predictions.jsonl'[cite: 11, 12, 15, 16].
 * **'README.md':** Tài liệu mô tả kiến trúc hệ thống và hướng dẫn thực nghiệm của dự án[cite: 15, 16].
