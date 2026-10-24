@@ -5,7 +5,6 @@ Kho lưu trữ chính thức cho bài báo nghiên cứu và quy trình thực n
 * **Mô hình mục tiêu:** 'google/gemma-4-E4B-it' ('Gemma 4 - gemma-4 - V1') và 'embeddinggemma-2' (740M)[cite: 10, 11, 12, 16].
 * **Phần cứng mục tiêu:** Thiết lập phần cứng người tiêu dùng với một bộ tăng tốc ('GPU T4 x2')[cite: 1, 2, 11, 12].
 * **Bộ dữ liệu tiêu chuẩn:** 'princeton-nlp/SWE-bench_Lite' ('split="test"', 'n_issues=40', 'seed=42')[cite: 12].
-* **Hạng mục giải thưởng mục tiêu:** Bài báo xuất sắc nhất (15.000 đô la), nguồn tài nguyên mới xuất sắc nhất (10.000 đô la) và ứng dụng mới xuất sắc nhất (10.000 đô la)[cite: 9, 10].
 
 ---
 
